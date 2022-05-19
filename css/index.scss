@@ -511,6 +511,8 @@ html{
                 background-size: 30px;
                 display: block;
                 position: absolute;
+                top: 50px;
+                right: 60px;
             }
             .subtitle{
                 @include px880(){
