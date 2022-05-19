@@ -49,38 +49,41 @@ $(function(){
         $('html').animate({
             scrollTop: loc[ind]
         },500);
+        y = ind;
     });
 
-    // $(window).on('mousewheel',function(eve){
-    //     now = eve.originalEvent.wheelDelta;
-    //     console.log(now);
-    //     console.log(y);
-    //     if (flag) {
-    //         if ( now < 0 ) {
-    //             y++;
-    //             if ( y > 4) {
-    //                 y = 4;
-    //             }
-    //             flag = false;
-    //         } else {
-    //             y--;
-    //             if ( y <= 0 ) {
-    //                 y = 0;
-    //             }
-    //             flag = false;
-    //         }
-    //         $('html').animate({
-    //             scrollTop: loc[y]
-    //         },1000,function(){
-    //             flag = true;
-    //         });
-    //     }
-    //     navBtn.removeClass('on');
-    //     navBtn.eq(y).addClass('on');
-    // });
+    $(window).on('mousewheel',function(eve){
+        now = eve.originalEvent.wheelDelta;
+        console.log(now);
+        console.log(y);
+        if (flag == true) {
+            if ( now < 0 ) {
+                y++;
+                if ( y > 5) {
+                    y = 5;
+                }
+                flag = false;
+            } else {
+                y--;
+                if ( y <= 0 ) {
+                    y = 0;
+                }
+                flag = false;
+            }
+            $('html').animate({
+                scrollTop: loc[y]
+            },1000,function(){
+                flag = true;
+            });
+        }
+        navBtn.removeClass('on');
+        navBtn.eq(y).addClass('on');
+    });
+
+
     $(window).scroll(function(){
-        for (var i = 0; i < $('.content').length; i++) {
-            loc[i] = $('.content').eq(i).offset().top;
+        for (var i = 0; i < $('html>div').length; i++) {
+            loc[i] = $('html>div').eq(i).offset().top;
         }        
     });
 
