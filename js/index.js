@@ -8,6 +8,7 @@ $(function(){
     const btnSignup = $('.header_wrap .btn_signup');
     const modalClose = $('.modal_box_wrap a');
     const navBtn = $('.header_wrap .nav_btn li');
+    const scrollDown = $('.header_wrap .scroll_down');
     let loc = [];
     let ind = 0;
     let now = 0;
@@ -62,6 +63,11 @@ $(function(){
                 if ( y > 5) {
                     y = 5;
                 }
+                if ( y == 5) {
+                    scrollDown.css({
+                        display: 'none'
+                    });
+                }
                 flag = false;
             } else {
                 y--;
@@ -69,6 +75,9 @@ $(function(){
                     y = 0;
                 }
                 flag = false;
+                scrollDown.css({
+                    display: 'block'
+                });
             }
             $('html').animate({
                 scrollTop: loc[y]
