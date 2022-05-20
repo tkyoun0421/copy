@@ -31,12 +31,14 @@
     }
 }
 
+
 html{
     font-size: 2vw;
     body{
         font-size: 0.5vw;
         width: 100vw;
         overflow-x: hidden;
+        overflow-y: hidden;
     }
 }
 .header_wrap{
