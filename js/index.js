@@ -220,23 +220,23 @@ $(function(){
     });
     
     $(window).scroll(function(){
-        if (($(window).scrollTop() * 1.2) - (content.eq(0).offset().top) > 0) {
+        if (($(window).scrollTop() * 2) - (content.eq(0).offset().top) > 0) {
             navBtn.removeClass('on');
             navBtn.eq(0).addClass('on');
         } 
-        if (($(window).scrollTop() * 1.2) - (content.eq(1).offset().top) > 0) {
+        if (($(window).scrollTop() * 2) - (content.eq(1).offset().top) > 0) {
             navBtn.removeClass('on');
             navBtn.eq(1).addClass('on');
         }
-        if (($(window).scrollTop() * 1.2) - (content.eq(2).offset().top) > 0) {
+        if (($(window).scrollTop() * 2) - (content.eq(2).offset().top) > 0) {
             navBtn.removeClass('on');
             navBtn.eq(2).addClass('on');
         } 
-        if (($(window).scrollTop() * 1.2) - (content.eq(3).offset().top) > 0) {
+        if (($(window).scrollTop() * 2) - (content.eq(3).offset().top) > 0) {
             navBtn.removeClass('on');
             navBtn.eq(3).addClass('on');
         } 
-        if (($(window).scrollTop() * 1.2) - (content.eq(4).offset().top) > 0) {
+        if (($(window).scrollTop() * 2) - (content.eq(4).offset().top) > 0) {
             navBtn.removeClass('on');
             navBtn.eq(4).addClass('on');
         } 
