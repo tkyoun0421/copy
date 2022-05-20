@@ -34,19 +34,16 @@ $(function(){
     callNav.click(function(){
         modalBoxWrap.addClass('on');
         modalBg.addClass('on');
-        body.addClass('on');
     });
 
     serviceBtn.click(function(){
         modalBoxWrap.addClass('on');
         modalBg.addClass('on');
-        body.addClass('on');
     });
 
     modalClose.click(function(){
         modalBoxWrap.removeClass('on');
         modalBg.removeClass('on');
-        body.removeClass('on');
     });
     // modal::end
 
