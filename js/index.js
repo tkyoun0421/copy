@@ -143,59 +143,26 @@ $(function(){
     content.on('mousewheel',function(eve){
         if ($(window).width() >= 1024) {
             now = eve.originalEvent.wheelDelta;
-        if ( ind == 0 ) {
-            credit.css({
-                display: 'block'
-            });
-            copyright.css({
-                display: 'none'
-            });
-        } else if ( ind >= 1 ) {
-            credit.css({
-                display: 'none'
-            });
-            copyright.css({
-                display: 'block'
-            });
-        }
-        if ( ind == 5 ) {
-            credit.css({
-                display: 'none'
-            });
-            copyright.css({
-                display: 'none'
-            });
-        }
-
-        if (flag) {
-            if ( now < 0 ) {
-                ind++;
-                if ( ind > 5) {
-                    ind = 5;
-                }
-                if ( ind == 5) {
-                    scrollDown.css({
-                        display: 'none'
-                    });
-                }
-                flag = false;
-            } else {
-                ind--;
-                if ( ind <= 0 ) {
-                    ind = 0;
+            if (flag) {
+                if ( now < 0 ) {
+                    ind++;
+                    if ( ind > 5) {
+                        ind = 5;
+                    }
+                    flag = false;
                 } else {
-                    scrollDown.css({
-                        display: 'block'
-                    });
+                    ind--;
+                    if ( ind <= 0 ) {
+                        ind = 0;
+                    }
+                    flag = false;
                 }
-                flag = false;
+                $('html').animate({
+                    scrollTop: loc[ind]
+                },1000,function(){
+                    flag = true;
+                });
             }
-            $('html').animate({
-                scrollTop: loc[ind]
-            },1000,function(){
-                flag = true;
-            });
-        }
         }        
     });
     
@@ -215,10 +182,22 @@ $(function(){
         if (($(window).scrollTop() * 1.2) - (content.eq(0).offset().top) > 0) {
             navBtn.removeClass('on');
             navBtn.eq(0).addClass('on');
-        } 
+            credit.css({
+                display: 'block'
+            });
+            copyright.css({
+                display: 'none'
+            });
+        }
         if (($(window).scrollTop() * 1.2) - (content.eq(1).offset().top) > 0) {
             navBtn.removeClass('on');
             navBtn.eq(1).addClass('on');
+            credit.css({
+                display: 'none'
+            });
+            copyright.css({
+                display: 'block'
+            });
         }
         if (($(window).scrollTop() * 1.2) - (content.eq(2).offset().top) > 0) {
             navBtn.removeClass('on');
@@ -231,7 +210,10 @@ $(function(){
         if (($(window).scrollTop() * 1.2) - (content.eq(4).offset().top) > 0) {
             navBtn.removeClass('on');
             navBtn.eq(4).addClass('on');
-        } 
+            scrollDown.css({
+                display: 'block'
+            });
+        }         
         if (($(window).scrollTop()) - (content.eq(4).offset().top) > 0) {
             navBtn.removeClass('on');
             credit.css({
@@ -242,16 +224,6 @@ $(function(){
             });
             scrollDown.css({
                 display: 'none'
-            });
-        } else {
-            credit.css({
-                display: 'none'
-            });
-            copyright.css({
-                display: 'block'
-            });
-            scrollDown.css({
-                display: 'block'
             });
         }
     });
