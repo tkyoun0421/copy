@@ -24,9 +24,11 @@ $(function(){
     let flag = true;
 
     // 새로고침 시 맨 위 페이지 이동
-    html.animate({
-        scrollTop: 0
-    },100);
+    if ($(window).width() >= 499) {
+        html.animate({
+            scrollTop: 0
+        },100);
+    }
 
     // modal::start
     callNav.click(function(){
