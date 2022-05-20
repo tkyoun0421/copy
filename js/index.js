@@ -16,7 +16,6 @@ $(function(){
     const marketing = $('.header_wrap .nav li').eq(1);
     const upstream = $('.header_wrap .nav li').eq(2);
     const subscription = $('.header_wrap .nav li').eq(3);
-    const body = $('body');
     const html = $('html');
     let loc = [];
     let ind = 0;
@@ -211,9 +210,9 @@ $(function(){
                 scrollTop: content.eq(ind).offset().top
             },0,function(){
             });
-        }
-        for (var i = 0; i < $('.content').length; i++){
-            loc[i] = $('.content').eq(i).offset().top;
+            for (var i = 0; i < content.length; i++){
+                loc[i] = content.eq(i).offset().top;
+            }
         }
     });
 
