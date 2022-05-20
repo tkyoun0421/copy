@@ -63,8 +63,6 @@ $(function(){
     disribution.click(function(){
         if ( flag == true ) {
             flag =! true;
-            navBtn.removeClass('on');
-            navBtn.eq(1).addClass('on');
             ind = $(this).index();
             $('html').animate({
                 scrollTop: loc[1]
@@ -78,8 +76,6 @@ $(function(){
     marketing.click(function(){
         if ( flag == true ) {
             flag =! true;
-            navBtn.removeClass('on');
-            navBtn.eq(2).addClass('on');
             ind = $(this).index();
             $('html').animate({
                 scrollTop: loc[2]
@@ -93,8 +89,6 @@ $(function(){
     upstream.click(function(){
         if ( flag == true ) {
             flag =! true;
-            navBtn.removeClass('on');
-            navBtn.eq(3).addClass('on');
             ind = $(this).index();
             $('html').animate({
                 scrollTop: loc[3]
@@ -108,8 +102,6 @@ $(function(){
     subscription.click(function(){
         if ( flag == true ) {
             flag =! true;
-            navBtn.removeClass('on');
-            navBtn.eq(4).addClass('on');
             ind = $(this).index();
             $('html').animate({
                 scrollTop: loc[4]
