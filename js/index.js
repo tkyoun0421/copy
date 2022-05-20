@@ -10,20 +10,21 @@ $(function(){
     const navBtn = $('.header_wrap .nav_btn li');
     const scrollDown = $('.header_wrap .scroll_down');
     const content = $('.content');
-    const scrollTop = $(window).scrollTop();
     const credit = $('.header_wrap .credit');
     const copyright = $('.header_wrap .copyright');
     const disribution = $('.header_wrap .nav li').eq(0);
     const marketing = $('.header_wrap .nav li').eq(1);
     const upstream = $('.header_wrap .nav li').eq(2);
     const subscription = $('.header_wrap .nav li').eq(3);
+    const body = $('body');
+    const html = $('html');
     let loc = [];
     let ind = 0;
     let now = 0;
     let flag = true;
 
     // 새로고침 시 맨 위 페이지 이동
-    $('html').animate({
+    html.animate({
         scrollTop: 0
     },100);
 
@@ -31,16 +32,19 @@ $(function(){
     callNav.click(function(){
         modalBoxWrap.addClass('on');
         modalBg.addClass('on');
+        body.addClass('on');
     });
 
     serviceBtn.click(function(){
         modalBoxWrap.addClass('on');
         modalBg.addClass('on');
+        body.addClass('on');
     });
 
     modalClose.click(function(){
         modalBoxWrap.removeClass('on');
         modalBg.removeClass('on');
+        body.removeClass('on');
     });
     // modal::end
 
@@ -143,7 +147,7 @@ $(function(){
             });
         }
     });
-    $(window).on('mousewheel',function(eve){
+    content.on('mousewheel',function(eve){
         now = eve.originalEvent.wheelDelta;
         if ( ind == 0 ) {
             credit.css({
@@ -196,17 +200,21 @@ $(function(){
                 scrollTop: loc[ind]
             },1000,function(){
                 flag = true;
-                console.log(loc[ind]);
             });
         }
         navBtn.removeClass('on');
         navBtn.eq(ind).addClass('on');
     });
-
-    // if ($(this).scrollTop() == content.eq(ind).offset().top) {
-    //     navBtn.removeClass('on');
-    //     navBtn.eq(ind).addClass('on');
-    // }
+    
+    $(window).resize(function(){
+        html.animate({
+            scrollTop: content.eq(ind).offset().top
+        },0,function(){
+        });
+        for (var i = 0; i < $('.content').length; i++){
+            loc[i] = $('.content').eq(i).offset().top;
+        }
+    });
 
     for (var i = 0; i < $('.content').length; i++){
         loc[i] = $('.content').eq(i).offset().top;
