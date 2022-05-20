@@ -209,10 +209,12 @@ $(function(){
     });
     
     $(window).resize(function(){
-        html.animate({
-            scrollTop: content.eq(ind).offset().top
-        },0,function(){
-        });
+        if ($(window).width() > 499) {
+            html.animate({
+                scrollTop: content.eq(ind).offset().top
+            },0,function(){
+            });
+        }
         for (var i = 0; i < $('.content').length; i++){
             loc[i] = $('.content').eq(i).offset().top;
         }
