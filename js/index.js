@@ -28,7 +28,10 @@ $(function(){
     if ($(window).width() >= 499) {
         html.animate({
             scrollTop: 0
-        },100);
+        },100,function(){
+            navBtn.removeClass('on');
+            navBtn.eq(0).addClass('on');
+        });
     }
 
     // modal::start
@@ -122,8 +125,6 @@ $(function(){
     navBtn.click(function(){
         if ( flag == true ) {
             flag =! true;
-            navBtn.removeClass('on');
-            $(this).addClass('on');
             ind = $(this).index();
             $('html').animate({
                 scrollTop: loc[ind]
@@ -203,8 +204,6 @@ $(function(){
                 flag = true;
             });
         }
-        navBtn.removeClass('on');
-        navBtn.eq(ind).addClass('on');
         }        
     });
     
