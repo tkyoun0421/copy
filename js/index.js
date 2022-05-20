@@ -9,11 +9,23 @@ $(function(){
     const modalClose = $('.modal_box_wrap a');
     const navBtn = $('.header_wrap .nav_btn li');
     const scrollDown = $('.header_wrap .scroll_down');
+    const content = $('.content');
+    const scrollTop = $(window).scrollTop();
+    const credit = $('.header_wrap .credit');
+    const copyright = $('.header_wrap .copyright');
+    const disribution = $('.header_wrap .nav li').eq(0);
+    const marketing = $('.header_wrap .nav li').eq(1);
+    const upstream = $('.header_wrap .nav li').eq(2);
+    const subscription = $('.header_wrap .nav li').eq(3);
     let loc = [];
     let ind = 0;
     let now = 0;
-    let y = 0;
     let flag = true;
+
+    // 새로고침 시 맨 위 페이지 이동
+    $('html').animate({
+        scrollTop: 0
+    },100);
 
     // modal::start
     callNav.click(function(){
@@ -40,61 +52,161 @@ $(function(){
     btnSignup.click(function(){
         alert('서비스 준비중입니다!');
     });
+    
+    disribution.click(function(){
+        if ( flag == true ) {
+            flag =! true;
+            navBtn.removeClass('on');
+            navBtn.eq(1).addClass('on');
+            ind = $(this).index();
+            $('html').animate({
+                scrollTop: loc[1]
+            },500,function(){
+                flag =! false;
+            });
+        }
+        ind = 1;
+    });
+
+    marketing.click(function(){
+        if ( flag == true ) {
+            flag =! true;
+            navBtn.removeClass('on');
+            navBtn.eq(2).addClass('on');
+            ind = $(this).index();
+            $('html').animate({
+                scrollTop: loc[2]
+            },500,function(){
+                flag =! false;
+            });
+        }
+        ind = 2;
+    });
+
+    upstream.click(function(){
+        if ( flag == true ) {
+            flag =! true;
+            navBtn.removeClass('on');
+            navBtn.eq(3).addClass('on');
+            ind = $(this).index();
+            $('html').animate({
+                scrollTop: loc[3]
+            },500,function(){
+                flag =! false;
+            });
+        }
+        ind = 3;
+    });
+
+    subscription.click(function(){
+        if ( flag == true ) {
+            flag =! true;
+            navBtn.removeClass('on');
+            navBtn.eq(4).addClass('on');
+            ind = $(this).index();
+            $('html').animate({
+                scrollTop: loc[4]
+            },500,function(){
+                flag =! false;
+            });
+        }
+        ind = 4;
+    });
     // header::end
     
     // main::start
     navBtn.click(function(){
-        navBtn.removeClass('on');
-        $(this).addClass('on');
-        ind = $(this).index();
-        $('html').animate({
-            scrollTop: loc[ind]
-        },500);
-        y = ind;
+        if ( flag == true ) {
+            flag =! true;
+            navBtn.removeClass('on');
+            $(this).addClass('on');
+            ind = $(this).index();
+            $('html').animate({
+                scrollTop: loc[ind]
+            },500,function(){
+                flag =! false;
+            });
+        }
+        if ( ind >= 1 ) {
+            credit.css({
+                display: 'none'
+            });
+            copyright.css({
+                display: 'block'
+            });
+        } else {
+            credit.css({
+                display: 'block'
+            });
+            copyright.css({
+                display: 'none'
+            });
+        }
     });
-
     $(window).on('mousewheel',function(eve){
         now = eve.originalEvent.wheelDelta;
-        console.log(now);
-        console.log(y);
-        if (flag == true) {
+        if ( ind == 0 ) {
+            credit.css({
+                display: 'block'
+            });
+            copyright.css({
+                display: 'none'
+            });
+        } else if ( ind >= 1 ) {
+            credit.css({
+                display: 'none'
+            });
+            copyright.css({
+                display: 'block'
+            });
+        }
+        if ( ind == 5 ) {
+            credit.css({
+                display: 'none'
+            });
+            copyright.css({
+                display: 'none'
+            });
+        }
+
+        if (flag) {
             if ( now < 0 ) {
-                y++;
-                if ( y > 5) {
-                    y = 5;
+                ind++;
+                if ( ind > 5) {
+                    ind = 5;
                 }
-                if ( y == 5) {
+                if ( ind == 5) {
                     scrollDown.css({
                         display: 'none'
                     });
                 }
                 flag = false;
             } else {
-                y--;
-                if ( y <= 0 ) {
-                    y = 0;
+                ind--;
+                if ( ind <= 0 ) {
+                    ind = 0;
+                } else {
+                    scrollDown.css({
+                        display: 'block'
+                    });
                 }
                 flag = false;
-                scrollDown.css({
-                    display: 'block'
-                });
             }
             $('html').animate({
-                scrollTop: loc[y]
+                scrollTop: loc[ind]
             },1000,function(){
                 flag = true;
+                console.log(loc[ind]);
             });
         }
         navBtn.removeClass('on');
-        navBtn.eq(y).addClass('on');
+        navBtn.eq(ind).addClass('on');
     });
 
-
-    $(window).scroll(function(){
-        for (var i = 0; i < $('html>div').length; i++) {
-            loc[i] = $('html>div').eq(i).offset().top;
-        }        
-    });
+    // if ($(this).scrollTop() == content.eq(ind).offset().top) {
+    //     navBtn.removeClass('on');
+    //     navBtn.eq(ind).addClass('on');
+    // }
 
     for (var i = 0; i < $('.content').length; i++){
         loc[i] = $('.content').eq(i).offset().top;
