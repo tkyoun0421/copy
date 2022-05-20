@@ -206,7 +206,7 @@ $(function(){
     });
     
     $(window).resize(function(){
-        if ($(window).width() > 499) {
+        if ($(window).width() >= 1024) {
             html.animate({
                 scrollTop: content.eq(ind).offset().top
             },0,function(){
